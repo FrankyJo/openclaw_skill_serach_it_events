@@ -1,6 +1,6 @@
 ---
 name: it_events
-description: Finds new upcoming IT events worldwide based on user-selected interests and location, avoids duplicates, and helps return official registration or payment links on request.---
+description: Finds new upcoming IT events worldwide based on user-selected interests and location, avoids duplicates, and helps return official registration or payment links on request.
 ---
 
 # IT Events
@@ -170,7 +170,7 @@ When possible, extract both:
 
 Use this file for deduplication:
 
-`memory/it-events-sent.json `
+`memory/it-events-sent.json`
 
 If the file does not exist, create it with this content:
 
@@ -194,18 +194,6 @@ Each sent event should be stored in memory/it-events-sent.json  like this:
   "location": "Berlin, Germany",
   "topics": ["JavaScript", "Frontend"],
   "matchedInterests": ["JavaScript", "Frontend"],
-  "eventUrl": "https://example.com/event",
-  "registrationUrl": "https://example.com/register",
-  "sentAt": "2026-04-06"
-},
-{
-  "id": "normalized_name|date|normalized_location",
-  "type": "conference",
-  "name": "Conference name",
-  "date": "2026-05-18",
-  "location": "Country or Worldwide / Online",
-  "topics": ["AI", "Frontend"],
-  "matchedInterests": ["AI", "Frontend"],
   "eventUrl": "https://example.com/event",
   "registrationUrl": "https://example.com/register",
   "sentAt": "2026-04-06"
@@ -433,24 +421,26 @@ Available scripts:
 If the user asks to find IT events one time, search manually, or test the skill,
 run:
 
-`"$SKILL_DIR/scripts/search-events.sh" "<interests>"`
+`"$SKILL_DIR/scripts/search-events.sh" "<interests>" "<location>"`
 
 Use this for requests like:
 
-- знайди нові IT-події в Україні
-- покажи нові події по Python та AI
-- знайди конференції та meetup-и по React
-- перевір, які нові події є по DevOps
+- знайди нові IT-події по AI у Німеччині
+- покажи нові події по Python та AI у Польщі
+- знайди конференції та meetup-и по React worldwide
+- перевір, які нові події є по DevOps у Чехії
 
 If the user provides interests, pass them as a single argument string.
 
-Examples:
+If the user provides a country, pass it as the second argument.
 
-- `"JavaScript, Frontend, React"`
-- `"Python, AI, Data Science"`
-- `"DevOps, Kubernetes, Cloud"`
+If the user wants global search, pass:
+
+`"worldwide"`
 
 If the user does not provide interests, ask them which IT directions they want.
+
+If the user does not provide location, ask which country to search in or whether to search worldwide.
 
 ### Weekly digest setup
 
@@ -477,6 +467,31 @@ If the user wants global search, pass:
 If the user does not provide interests, ask them which IT directions they want before running the setup script.
 
 If the user does not provide location, ask which country to use or whether to search worldwide before running the setup script.
+
+## Runtime requirements
+
+This skill requires the local `openclaw` CLI to be installed and available in PATH.
+
+The helper scripts rely on:
+
+- `openclaw agent`
+- `openclaw cron`
+
+If the `openclaw` command is not available, the scripts must not run and should return a clear error message.
+
+## Automation safety
+
+`setup-cron.sh` creates a persistent recurring cron job through OpenClaw.
+
+This script must run only when the user explicitly asks for recurring or weekly delivery.
+
+Do not run `setup-cron.sh` for one-time searches.
+
+Before creating a cron job, the assistant must ensure that:
+- the user clearly wants recurring delivery
+- interests are known
+- location is known
+
 
 ### Script behavior rules
 

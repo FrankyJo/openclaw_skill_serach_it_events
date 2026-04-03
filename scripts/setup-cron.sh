@@ -33,7 +33,7 @@ EOF
   echo "Створив state file: $STATE_FILE"
 fi
 
-MESSAGE="Use the ua_it_events skill. Find new future IT events in Ukraine that match these user interests: $INTERESTS. Exclude events already stored in memory/it-events-sent.json. Return the digest in Ukrainian. After sending the result, update memory/it-events-sent.json."
+MESSAGE="Use the it_events skill. Find new future IT events in Ukraine that match these user interests: $INTERESTS. Exclude events already stored in memory/it-events-sent.json. Return the digest in Ukrainian. After sending the result, update memory/it-events-sent.json."
 
 EXISTING_JOB_ID="$(openclaw cron list 2>/dev/null | awk -v name="$JOB_NAME" '
   BEGIN { FS="[[:space:]][[:space:]]+" }

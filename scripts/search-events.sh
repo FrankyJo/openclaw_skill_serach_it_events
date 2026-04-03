@@ -29,6 +29,6 @@ EOF
   echo "Створив state file: $STATE_FILE"
 fi
 
-PROMPT="Use the ua_it_events skill. Find new future IT events in Ukraine for these interests: $INTERESTS. Exclude events already listed in memory/it-events-sent.json. Return the answer in Ukrainian. After producing the result, update memory/it-events-sent.json."
+PROMPT="Use the it_events skill. Find new future IT events in Ukraine for these interests: $INTERESTS. Exclude events already listed in memory/it-events-sent.json. Return the answer in Ukrainian. After producing the result, update memory/it-events-sent.json."
 
 openclaw agent --message "$PROMPT"
