@@ -3,7 +3,7 @@ set -euo pipefail
 
 WORKSPACE="${OPENCLAW_WORKSPACE:-$HOME/.openclaw/workspace}"
 MEMORY_DIR="$WORKSPACE/memory"
-STATE_FILE="$MEMORY_DIR/ua-it-events-sent.json"
+STATE_FILE="$MEMORY_DIR/it-events-sent.json"
 
 INTERESTS="${1:-}"
 
@@ -29,6 +29,6 @@ EOF
   echo "Створив state file: $STATE_FILE"
 fi
 
-PROMPT="Use the ua_it_events skill. Find new future IT events in Ukraine for these interests: $INTERESTS. Exclude events already listed in memory/ua-it-events-sent.json. Return the answer in Ukrainian. After producing the result, update memory/ua-it-events-sent.json."
+PROMPT="Use the ua_it_events skill. Find new future IT events in Ukraine for these interests: $INTERESTS. Exclude events already listed in memory/it-events-sent.json. Return the answer in Ukrainian. After producing the result, update memory/it-events-sent.json."
 
 openclaw agent --message "$PROMPT"

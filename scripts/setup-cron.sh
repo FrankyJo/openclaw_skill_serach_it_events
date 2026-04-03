@@ -7,7 +7,7 @@ CRON_EXPR="0 9 * * 1"
 
 WORKSPACE="${OPENCLAW_WORKSPACE:-$HOME/.openclaw/workspace}"
 MEMORY_DIR="$WORKSPACE/memory"
-STATE_FILE="$MEMORY_DIR/ua-it-events-sent.json"
+STATE_FILE="$MEMORY_DIR/it-events-sent.json"
 
 INTERESTS="${1:-}"
 
@@ -33,7 +33,7 @@ EOF
   echo "Створив state file: $STATE_FILE"
 fi
 
-MESSAGE="Use the ua_it_events skill. Find new future IT events in Ukraine that match these user interests: $INTERESTS. Exclude events already stored in memory/ua-it-events-sent.json. Return the digest in Ukrainian. After sending the result, update memory/ua-it-events-sent.json."
+MESSAGE="Use the ua_it_events skill. Find new future IT events in Ukraine that match these user interests: $INTERESTS. Exclude events already stored in memory/it-events-sent.json. Return the digest in Ukrainian. After sending the result, update memory/it-events-sent.json."
 
 EXISTING_JOB_ID="$(openclaw cron list 2>/dev/null | awk -v name="$JOB_NAME" '
   BEGIN { FS="[[:space:]][[:space:]]+" }

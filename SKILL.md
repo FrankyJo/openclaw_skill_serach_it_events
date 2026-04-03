@@ -170,7 +170,7 @@ When possible, extract both:
 
 Use this file for deduplication:
 
-`memory/ua-it-events-sent.json`
+`memory/it-events-sent.json `
 
 If the file does not exist, create it with this content:
 
@@ -183,7 +183,7 @@ If the file does not exist, create it with this content:
 ---
 ## Stored format
 
-Each sent event should be stored in memory/ua-it-events-sent.json like this:
+Each sent event should be stored in memory/it-events-sent.json  like this:
 
 ```json
 {
@@ -191,7 +191,7 @@ Each sent event should be stored in memory/ua-it-events-sent.json like this:
   "type": "conference",
   "name": "Conference name",
   "date": "2026-05-18",
-  "location": "Kyiv, Ukraine",
+  "location": "Berlin, Germany",
   "topics": ["JavaScript", "Frontend"],
   "matchedInterests": ["JavaScript", "Frontend"],
   "eventUrl": "https://example.com/event",
@@ -300,15 +300,15 @@ Keep the message compact and easy to scan.
 
 Example structure:
 
-- Meetup - JS Kyiv Community
+- Meetup - JS Kraków Community
   - Дата: 2026-05-18
-  - Локація: Kyiv, Ukraine
+  - Локація: Kraków, Poland
   - Теми: JavaScript, Frontend
   - Сайт: ...
   - Реєстрація: ...
 - Workshop - Python AI Lab
   - Дата: 2026-06-02
-  - Локація: Online / Ukraine
+  - Локація: Online / USA
   - Теми: Python, AI
   - Сайт: ...
   - Реєстрація: ...
@@ -369,7 +369,7 @@ Only include an event if all of the following are clear enough:
 - type
 - name
 - future date
-- location or clear Ukrainian origin / audience
+- location / audience
 - topic relevance to the user’s selected interests
 - official or reliable source
 

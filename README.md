@@ -1,5 +1,7 @@
 # IT Events Skill
 
+Link: https://clawhub.ai/frankyjo/searchitevents
+
 Use natural language to ask for IT events.
 
 ## One-time search
